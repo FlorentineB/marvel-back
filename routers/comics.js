@@ -10,7 +10,6 @@ router.get("/comics/:characterId", async (req, res) => {
     const { data } = await axios.get(
       `${process.env.MARVEL_BACKEND_URL}/comics/${req.params.characterId}${queryParams}`
     );
-    console.log(data.comics);
     res.status(200).json(data.comics);
   } catch (error) {
     res.status(400).json({ error: error.message });

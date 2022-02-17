@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const FavouriteComic = mongoose.model("FavouriteComic", {
   apiid: {
     type: String,
+    unique: true,
   },
   title: {
     type: String,

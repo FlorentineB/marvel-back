@@ -30,6 +30,9 @@ app.use(comics);
 const characters = require("./routers/characters");
 app.use(characters);
 
+const favourites = require("./routers/favourites");
+app.use(favourites);
+
 // Routes qui n'existent pas
 app.get("*", (req, res) => {
   res.status(404).json({ error: "page not found" });
