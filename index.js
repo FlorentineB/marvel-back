@@ -34,6 +34,9 @@ const favourites = require("./routers/favourites");
 app.use(favourites);
 
 // Routes qui n'existent pas
+app.get("/", (req, res) => {
+  res.status(200).json("home");
+});
 app.get("*", (req, res) => {
   res.status(404).json({ error: "page not found" });
 });
