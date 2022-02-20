@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
 
-const FavouriteCharacter = mongoose.model("FavouriteCharacter", {
+let FavouriteCharacterSchema = mongoose.Schema({
   apiid: {
     type: String,
-    unique: true,
   },
   name: {
     type: String,
@@ -24,5 +23,12 @@ const FavouriteCharacter = mongoose.model("FavouriteCharacter", {
     ref: "User",
   },
 });
+
+FavouriteCharacterSchema.index({ apiid: 1, user: 1 }, { unique: true });
+
+const FavouriteCharacter = mongoose.model(
+  "FavouriteCharacter",
+  FavouriteCharacterSchema
+);
 
 module.exports = FavouriteCharacter;

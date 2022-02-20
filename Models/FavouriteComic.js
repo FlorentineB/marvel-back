@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
 
-const FavouriteComic = mongoose.model("FavouriteComic", {
+let FavouriteComicSchema = mongoose.Schema({
   apiid: {
     type: String,
-    unique: true,
   },
   title: {
     type: String,
@@ -24,5 +23,9 @@ const FavouriteComic = mongoose.model("FavouriteComic", {
     ref: "User",
   },
 });
+
+FavouriteComicSchema.index({ apiid: 1, user: 1 }, { unique: true });
+
+const FavouriteComic = mongoose.model("FavouriteComic", FavouriteComicSchema);
 
 module.exports = FavouriteComic;
